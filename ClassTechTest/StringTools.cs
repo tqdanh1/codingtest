@@ -41,6 +41,24 @@ namespace ClassTechTest
 
         public bool IsPalindrome(string input)
         {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return false;
+            }
+
+            int leftIndex = 0;
+            int rightIndex = input.Length - 1;
+
+            while (leftIndex < rightIndex)
+            {
+                if (char.ToLower(input[leftIndex]) != char.ToLower(input[rightIndex]))
+                {
+                    return false;
+                }
+                leftIndex++;
+                rightIndex--;
+            }
+
             return true;
         }
 
