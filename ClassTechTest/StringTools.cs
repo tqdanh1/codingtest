@@ -64,6 +64,30 @@ namespace ClassTechTest
 
         public string FindLargestPalindrome(string input)
         {
+            if (string.IsNullOrEmpty(input))
+            {
+                return null;
+            }
+
+            if (input.Length == 1)
+            {
+                return input;
+            }
+
+            var subStringLength = input.Length;
+            while (subStringLength > 1)
+            {
+                for (var startIndex = 0; startIndex + subStringLength <= input.Length; startIndex++)
+                {
+                    var subString = input.Substring(startIndex, subStringLength);
+                    if (IsPalindrome(subString))
+                    {
+                        return subString;
+                    }
+                }
+                subStringLength--;
+            }
+
             return null;
         }
 
